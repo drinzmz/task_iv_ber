@@ -1,6 +1,8 @@
 ﻿#include "pch.h"
 
+
 uint8_t hammingDistance(uint8_t n1, uint8_t n2);
+void createFile1(const std::string name, const int count, const char value);
 
 int main(int argc, char * argv[])
 {
@@ -12,7 +14,7 @@ int main(int argc, char * argv[])
     }
 
     std::cout << (int)hammingDistance(0xFF, 0x01) << std::endl;
-
+    createFile1("test1_file1.bin", 100, 0x55);
     return 0;
 }
 
@@ -26,4 +28,15 @@ uint8_t hammingDistance(uint8_t n1, uint8_t n2)
         x >>= 1;
     }
     return setBits;
+}
+
+void createFile1(const std::string name, const int count, const char value)
+{
+    std::fstream f;
+    f.open(name.c_str(), std::ios::binary | std::ios::out);
+    for (int i = 0; i < count; i++)
+    {
+        f.write((char*)&value,1);
+    }
+    f.close();
 }
