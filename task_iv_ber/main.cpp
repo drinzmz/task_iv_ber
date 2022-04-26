@@ -1,12 +1,15 @@
 ﻿#include "pch.h"
 
-
 uint8_t hammingDistance(uint8_t n1, uint8_t n2);
 void createFile1(const std::string name, const int count, const char value);
 
 int main(int argc, char * argv[])
 {
     std::cout << "BER Calc v1.0" << std::endl;
+    openLog("log.log");
+    saveLog("Program uruchomiono poprawnie");
+    closeLog();
+
     std::cout << "argc =  : " << argc << std::endl; 
     int iter = 0;
     for (iter = 0; iter < argc; iter++) {
